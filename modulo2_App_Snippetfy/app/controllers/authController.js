@@ -43,7 +43,12 @@ module.exports = {
     req.session.user = user;
 
     return req.session.save(() => {
-      res.redirect('app/dasboard');
+      res.redirect('app/dashboard');
+    });
+  },
+  signout(req, res) {
+    return req.session.destroy(() => {
+      res.redirect('/');
     });
   },
 };
