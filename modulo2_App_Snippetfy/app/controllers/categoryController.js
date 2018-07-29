@@ -3,32 +3,30 @@ const { Category, Snippet } = require('../models');
 module.exports = {
   async store(req, res, next) {
     try {
-      const cat = await Category.create({
+      const category = await Category.create({
         ...req.body,
         UserId: req.session.user.id,
       });
 
-      req.flash('success', 'Categoria criada com sucesso');
+      req.flash('success', 'Categoria criada com sucesso.');
 
-      return res.redirect(`/app/categories/${cat.id}`);
+      return res.redirect(`/app/categories/${category.id}`);
     } catch (err) {
       return next(err);
     }
   },
-
   async show(req, res, next) {
     try {
       const categories = await Category.findAll({
         include: [Snippet],
         where: {
-          UserID: req.session.user.id,
+          UserId: req.session.user.id,
         },
       });
 
       const snippets = await Snippet.findAll({
         where: { CategoryId: req.params.id },
       });
-
       return res.render('categories/show', {
         categories,
         snippets,

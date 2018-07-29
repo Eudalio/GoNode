@@ -6,8 +6,8 @@ const authMiddleware = require('./middlewares/auth');
 const guestMiddleware = require('./middlewares/guest');
 
 const authController = require('./controllers/authController');
-const dashboardController = require('./controllers/dashboardController');
 const categoryController = require('./controllers/categoryController');
+const dashboardController = require('./controllers/dashboardController');
 const snippetController = require('./controllers/snippetController');
 
 routes.use((req, res, next) => {
@@ -45,7 +45,7 @@ routes.post('/app/categories/create', categoryController.store);
   * Snippets
 */
 
-routes.get('/app/categories/:id', categoryController.show);
+routes.get('/app/categories/:categoryId/snippets/:id', snippetController.show);
 routes.post('/app/categories/:categoryId/snippets/create', snippetController.store);
 
 /**
