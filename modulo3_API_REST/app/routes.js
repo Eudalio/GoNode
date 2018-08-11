@@ -21,6 +21,12 @@ routes.post('/signin', Controllers.authController.signin);
 
 routes.use(authMiddlewares);
 
-routes.get('/tweets', (req, res) => res.send('OK'));
+/*
+ * =========
+ * Tweets
+*/
+
+routes.post('/tweets', Controllers.tweetController.create);
+routes.delete('/tweets/:id', Controllers.tweetController.destroy);
 
 module.exports = routes;
