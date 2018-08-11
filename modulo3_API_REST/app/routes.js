@@ -32,4 +32,9 @@ routes.put('/users', Controllers.userController.update);
 routes.post('/tweets', Controllers.tweetController.create);
 routes.delete('/tweets/:id', Controllers.tweetController.destroy);
 
+/*
+ * =========
+ * Likes
+*/
+routes.post('/like/:id', Controllers.likeController.toggle);
 module.exports = routes;
