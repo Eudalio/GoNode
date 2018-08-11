@@ -10,7 +10,6 @@ const Controllers = requireDir('./controllers');
 /*
  * Auth
 */
-
 routes.post('/signup', Controllers.authController.signup);
 routes.post('/signin', Controllers.authController.signin);
 
@@ -18,14 +17,18 @@ routes.post('/signin', Controllers.authController.signin);
  * =========
  * Auth routes
 */
-
 routes.use(authMiddlewares);
+
+/*
+ * =========
+ * Users
+*/
+routes.put('/users', Controllers.userController.update);
 
 /*
  * =========
  * Tweets
 */
-
 routes.post('/tweets', Controllers.tweetController.create);
 routes.delete('/tweets/:id', Controllers.tweetController.destroy);
 
